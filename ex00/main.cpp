@@ -2,24 +2,32 @@
 
 int main()
 {
-    std::vector<int> vec = {1, 2, 3, 4};
+    int sa[] = {1, 2, 3, 4};
+    std::vector<int> vec(sa, sa + 4);
     std::vector<int>::iterator it;
-
-    it = easyfind(vec, 2);
-
-    std::cout << "voici mon resultat" << *it << std::endl;
+    try
+    {
+        it = easyfind<std::vector<int> >(vec, 8);
+    }
+    catch(const std::exception & e)
+    {
+        std::cout << e.what() << std::endl;
+        return 1;
+    }
+    std::cout << "voici mon resultat " << *it << std::endl;
     return 0;
 }
 
 template <typename T>
-T easyfind(T typ, int i)
+typename T::iterator easyfind(T & typ, int i)
 {
-	std::vector<int>::iterator it;
-	for (it = typ.begin(); *it != i ; it++)
-
-	if (it == typ.end())
-		return (-1)
-	return it;
+	typename T::iterator it;
+    it = std::find(typ.begin(), typ.end(), i);
+    if (it == typ.end())
+    {
+        throw std::out_of_range("Value not found in container");
+    }
+    return it;
 }
 
 // T doit etre un container qui contiens des int, cette fonction doit trouver

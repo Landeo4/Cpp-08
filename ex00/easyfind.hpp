@@ -4,8 +4,10 @@
 #include <iostream>
 #include <iterator>
 #include <vector>
+#include <stdexcept>
+#include <algorithm>
 
 template <typename T>
-T easyfind(T typ, int i);
+typename T::iterator easyfind(T &typ, int i);
 
 #endif
