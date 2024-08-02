@@ -8,14 +8,4 @@
 template <typename T>
 T easyfind(T typ, int i);
 
-template <typename T>
-T easyfind(T typ, int i)
-{
-	std::vector<int>::iterator it;
-
-	for (it = typ.begin(); *it != i ; it++)
-
-	return (it);
-}
-
 #endif

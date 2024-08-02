@@ -4,9 +4,22 @@ int main()
 {
     std::vector<int> vec = {1, 2, 3, 4};
     std::vector<int>::iterator it;
+
     it = easyfind(vec, 2);
-    std::cout << "voici it " << it << std::endl;
+
+    std::cout << "voici mon resultat" << *it << std::endl;
     return 0;
+}
+
+template <typename T>
+T easyfind(T typ, int i)
+{
+	std::vector<int>::iterator it;
+	for (it = typ.begin(); *it != i ; it++)
+
+	if (it == typ.end())
+		return (-1)
+	return it;
 }
 
 // T doit etre un container qui contiens des int, cette fonction doit trouver
