@@ -1,9 +1,12 @@
 #include "easyfind.hpp"
 
-
 int main()
 {
-
+    std::vector<int> vec = {1, 2, 3, 4};
+    std::vector<int>::iterator it;
+    it = easyfind(vec, 2);
+    std::cout << "voici it " << it << std::endl;
+    return 0;
 }
 
 // T doit etre un container qui contiens des int, cette fonction doit trouver
