@@ -31,19 +31,19 @@ Span::Span(unsigned int N) : _N(N)
 
 bool Span::addNumber(int nb)
 {
-    if (!_list.empty())
+    if (_list.empty())
     {
-        if (_list.size() > _N)
-            throw Exception();
-
-        for (_it = _list.begin(); *_it  ; _it++)
-
-        if (_it == _list.end())
-            return false;
+        _list.push_back(nb);
+        return true;
     }
+    if (_list.size() > _N)
+        throw Exception();
+
+    for (_it = _list.begin(); _it != _list.end() ; _it++)
+    
+    if (_it == _list.end())
+        return false;
     _list.push_back(nb);
-    int i = _list.back();
-    std::cout << "voici le dernier element ajouter " << i << std::endl;
     return true;
 }
 
@@ -53,18 +53,32 @@ bool Span::addNumber(int nb)
 
 int Span::shortestSpan()
 {
-    // if (_list.size() < 2)
-        // throw exception
+    if (_list.size() < 2)
+        throw Exception();
     std::vector<int>::iterator i1 = _list.begin();
     std::vector<int>::iterator i2 = _list.begin();
+    int nb;
 
-    return *std::min_element(i1, i2+5);
+    nb = 2147483646;
+    while (i1 != _list.end())
+    {
+        i2 = _list.begin();
+        while (i2 != _list.end())
+        {
+            if (*i1 - *i2 < nb && *i1 - *i2 > 0)
+                nb = *i1 - *i2;
+            i2++;
+        }
+        i1++;
+    }
+
+    return nb;
 }
 
 int Span::longestSpan()
 {
-    for (std::vector<int>::iterator it = _list.begin(); it < _list.end(); it++)
-        std::cout << *it << std::endl;
+    if (_list.size() < 2)
+        throw Exception();
     std::vector<int>::iterator it = _list.begin();
     std::vector<int>::iterator last = _list.end();
     int min = *std::min_element(_list.begin(), _list.end());

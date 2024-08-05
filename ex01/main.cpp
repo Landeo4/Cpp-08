@@ -10,7 +10,6 @@ int main()
     sp.addNumber(9);
     sp.addNumber(11);
 
-    std::cout << "maintenant les Span" << std::endl;
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
     return 0;
@@ -18,6 +17,6 @@ int main()
 
 // penser Container
 
-// pour calculer le plus petit spna, je vais prendre chaque nombre de mon tableau
+// pour calculer le plus petit span, je vais prendre chaque nombre de mon tableau
 // puis je vais les comparers a tous les autres qui suivent, a chaque fois que le span
 // est plus ou moins petit (suivant le cas) que le precedent, je le sauvegarde
