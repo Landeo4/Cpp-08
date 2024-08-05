@@ -1,6 +1,6 @@
 #include "Span.hpp"
 
-Span::Span() : _N(0), _list(_N)
+Span::Span() : _N(0)
 {
 
 }
@@ -24,45 +24,54 @@ Span::Span(const Span & copy)
     *this = copy;
 }
 
-Span::Span(unsigned int N) : _N(N), _list(_N)
+Span::Span(unsigned int N) : _N(N)
 {
 
 }
 
-void Span::addNumber(int nb)
+bool Span::addNumber(int nb)
 {
-    if (_list.empty())
-        _list.push_back(nb);
+    if (!_list.empty())
+    {
+        if (_list.size() > _N)
+            throw Exception();
 
-    for (_it = _list.begin(); *_it  ; _it++)
+        for (_it = _list.begin(); *_it  ; _it++)
 
-    if (_it == _list.end())
-        return ;
+        if (_it == _list.end())
+            return false;
+    }
     _list.push_back(nb);
     int i = _list.back();
     std::cout << "voici le dernier element ajouter " << i << std::endl;
+    return true;
 }
 
 // add a single number to the SPan, il sera utiliser pour remplir
 //cette derniere, si un l'on essaye d'ajouter un element alors que
 // N est deja atteint renverra une exeption
 
-void Span::shortestSpan()
+int Span::shortestSpan()
 {
     // if (_list.size() < 2)
         // throw exception
     std::vector<int>::iterator i1 = _list.begin();
     std::vector<int>::iterator i2 = _list.begin();
 
-    std::cout << "the smallest element is " << *std::min_element(i1, i2) << std::endl;
+    return *std::min_element(i1, i2+5);
 }
 
-void Span::longestSpan()
+int Span::longestSpan()
 {
-    std::vector<int>::iterator i1 = _list.begin();
-    std::vector<int>::iterator i2 = _list.begin();
+    for (std::vector<int>::iterator it = _list.begin(); it < _list.end(); it++)
+        std::cout << *it << std::endl;
+    std::vector<int>::iterator it = _list.begin();
+    std::vector<int>::iterator last = _list.end();
+    int min = *std::min_element(_list.begin(), _list.end());
+    int max = *std::max_element(it, last);
 
-    std::cout << "the largest element is " << *std::max_element(i1, i2) << std::endl;
+    int larg = max - min;
+    return larg;
 }
 
 // trouver le plus grand (ou petit) distance entre tous les nombres et le renvoyer

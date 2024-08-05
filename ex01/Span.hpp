@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <exception>
 
 class Span
 {
@@ -14,10 +15,19 @@ class Span
     Span(unsigned int N);
 
     // cree une exception pour apprendre
-    void    addNumber(int nb);
-    void    shortestSpan();
-    void    longestSpan();
+    bool    addNumber(int nb);
+    int    shortestSpan();
+    int    longestSpan();
     void    fillSpan(int nb);
+
+    class Exception : public std::exception
+    {
+        public:
+        const char * what() const throw()
+        {
+            return ("a problem happend");
+        }
+    };
 
     private:
     unsigned int                _N;
