@@ -91,9 +91,21 @@ int Span::longestSpan()
 // trouver le plus grand (ou petit) distance entre tous les nombres et le renvoyer
 // s'il y a aucun Span ou qu'un seul, renvoyer une exception
 
-void Span::fillSpan(int nb)
+void Span::fillSpan()
 {
-    (void)nb;
+    int random;
+    if (_list.empty())
+        _list.push_back(100 + (rand() % 101));
+    else if (_list.size() > _N)
+        throw Exception();
+
+    std::vector<int>::iterator it = _list.end();
+    for (; it < (_list.end() + _N); it++)
+    {
+        random = 100 + (rand() % 101);
+        _list.push_back(random);
+        // std::cout << *it << std::endl;
+    }
     // std::for_each(_cont[0], _cont[_N], nb++);
 }
 

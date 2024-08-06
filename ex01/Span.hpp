@@ -15,10 +15,10 @@ class Span
     Span(unsigned int N);
 
     // cree une exception pour apprendre
-    bool    addNumber(int nb);
+    bool   addNumber(int nb);
     int    shortestSpan();
     int    longestSpan();
-    void    fillSpan(int nb);
+    void   fillSpan();
 
     class Exception : public std::exception
     {
