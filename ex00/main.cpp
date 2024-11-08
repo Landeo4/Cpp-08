@@ -2,6 +2,20 @@
 
 int main()
 {
+    int nb[] = {1, 2, 3, 4};
+    std::vector<int> vec1(nb, nb + 4);
+    std::vector<int>::iterator it2;
+    try
+    {
+        it2 = easyfind<std::vector<int> >(vec1, 2);
+    }
+    catch(const std::exception & e)
+    {
+        std::cout << e.what() << std::endl;
+        return 1;
+    }
+    std::cout << "voici it2: " << *it2 << std::endl;
+    std::cout << "si aucune occurence:" << std::endl;
     int sa[] = {1, 2, 3, 4};
     std::vector<int> vec(sa, sa + 4);
     std::vector<int>::iterator it;
@@ -14,7 +28,6 @@ int main()
         std::cout << e.what() << std::endl;
         return 1;
     }
-    std::cout << "voici mon resultat " << *it << std::endl;
     return 0;
 }
 

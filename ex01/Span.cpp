@@ -100,6 +100,7 @@ void Span::fillSpan()
         throw Exception();
 
     std::vector<int>::iterator it = _list.end();
+    std::cout << "voici end " << *it << " voici _N " << _N << std::endl;
     for (; it < (_list.end() + _N); it++)
     {
         random = 100 + (rand() % 101);
@@ -108,5 +109,3 @@ void Span::fillSpan()
     }
     // std::for_each(_cont[0], _cont[_N], nb++);
 }
-
-// method pour mettre
