@@ -99,13 +99,14 @@ void Span::fillSpan()
     else if (_list.size() > _N)
         throw Exception();
 
-    std::vector<int>::iterator it = _list.end();
-    std::cout << "voici end " << *it << " voici _N " << _N << std::endl;
+    std::vector<int>::iterator it = _list.begin();
+    std::cout << "voici N " << _N << " ";
+    // std::cout << "voici end " << *it;
     for (; it < (_list.end() + _N); it++)
     {
         random = 100 + (rand() % 101);
         _list.push_back(random);
-        // std::cout << *it << std::endl;
+        std::cout << *it << " size " << _list.size() << std::endl;
     }
     // std::for_each(_cont[0], _cont[_N], nb++);
 }
