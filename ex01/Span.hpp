@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <vector>
 #include <exception>
+#include <unistd.h>
 
 class Span
 {

@@ -31,6 +31,10 @@ Span::Span(unsigned int N) : _N(N)
 
 bool Span::addNumber(int nb)
 {
+    if (_N > 10000000)
+    {
+        throw Exception();
+    }
     if (_list.empty())
     {
         _list.push_back(nb);
@@ -39,10 +43,13 @@ bool Span::addNumber(int nb)
     if (_list.size() > _N)
         throw Exception();
 
-    for (_it = _list.begin(); _it != _list.end() ; _it++)
-    
     if (_it == _list.end())
         return false;
+    if (_list.size() == _N)
+    {
+        std::cout << "Span is full" << std::endl;
+        return false;
+    }
     _list.push_back(nb);
     return true;
 }
@@ -94,19 +101,24 @@ int Span::longestSpan()
 void Span::fillSpan()
 {
     int random;
-    if (_list.empty())
+    if (_N > 0 && _list)
         _list.push_back(100 + (rand() % 101));
     else if (_list.size() > _N)
         throw Exception();
 
+
     std::vector<int>::iterator it = _list.begin();
-    std::cout << "voici N " << _N << " ";
+    std::cout << "liste_size " << _list.size() << std::endl;
+    std::cout << "voici N " << _N << " " << std::endl;
+    usleep(1000000);
     // std::cout << "voici end " << *it;
-    for (; it < (_list.end() + _N); it++)
+    for (; it < _list.end(); it++)
     {
         random = 100 + (rand() % 101);
-        _list.push_back(random);
-        std::cout << *it << " size " << _list.size() << std::endl;
+        // _list.push_back(random);
+        *it = random;
+        std::cout << "voici it " << *it << std::endl;
+        // std::cout << *it << " size " << _list.size() << std::endl;
     }
     // std::for_each(_cont[0], _cont[_N], nb++);
 }
