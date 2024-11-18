@@ -65,8 +65,9 @@ int Span::shortestSpan()
     std::vector<int>::iterator i1 = _list.begin();
     std::vector<int>::iterator i2 = _list.begin();
     int nb;
-
+	
     nb = 2147483646;
+	i1 = _list.begin();
     while (i1 != _list.end())
     {
         i2 = _list.begin();
@@ -101,24 +102,15 @@ int Span::longestSpan()
 void Span::fillSpan()
 {
     int random;
-    if (_N > 0 && _list)
+    if (_N > 0 && _list.empty())
         _list.push_back(100 + (rand() % 101));
     else if (_list.size() > _N)
+	{
         throw Exception();
-
-
-    std::vector<int>::iterator it = _list.begin();
-    std::cout << "liste_size " << _list.size() << std::endl;
-    std::cout << "voici N " << _N << " " << std::endl;
-    usleep(1000000);
-    // std::cout << "voici end " << *it;
-    for (; it < _list.end(); it++)
-    {
+	}
+	for (; _N > _list.size();)
+	{
         random = 100 + (rand() % 101);
-        // _list.push_back(random);
-        *it = random;
-        std::cout << "voici it " << *it << std::endl;
-        // std::cout << *it << " size " << _list.size() << std::endl;
-    }
-    // std::for_each(_cont[0], _cont[_N], nb++);
+		_list.push_back(random);
+	}
 }
