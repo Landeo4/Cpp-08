@@ -6,9 +6,9 @@ int main()
 
     try
     {
-		sp.fillSpan();
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
+        sp.fillSpan();
+        std::cout << sp.shortestSpan() << std::endl;
+        std::cout << sp.longestSpan() << std::endl;
     }
     catch(std::exception & e)
     {

@@ -1,7 +1,7 @@
 NAME	=	Span
 
 SRCS	=	main.cpp \
-			Span.cpp
+			Span.cpp \
 
 OBJS= $(SRCS:.cpp=.o)
 
